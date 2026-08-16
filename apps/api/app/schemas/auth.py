@@ -21,11 +21,10 @@ class RegisterRequest(BaseModel):
     @classmethod
     def validate_username(cls, v: str) -> str:
         v = v.strip()
-        if not USERNAME_PATTERN.match(v):
-            raise ValueError(
-                "Username must be 1-39 characters, alphanumeric and hyphens only, "
-                "cannot start or end with a hyphen."
-            )
+        if not v or len(v) > 100:
+            raise ValueError("Username must be between 1 and 100 characters.")
+        if "/" in v or "\\" in v or ".." in v:
+            raise ValueError("Username contains invalid characters.")
         return v.lower()
 
     @field_validator("password")

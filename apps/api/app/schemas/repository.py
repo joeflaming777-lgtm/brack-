@@ -25,11 +25,10 @@ class RepoCreateRequest(BaseModel):
     @classmethod
     def validate_name(cls, v: str) -> str:
         v = v.strip()
-        if not REPO_NAME_PATTERN.match(v):
-            raise ValueError(
-                "Repository name must be 1-100 characters, using letters, numbers, "
-                "hyphens, underscores, and dots only."
-            )
+        if not v or len(v) > 100:
+            raise ValueError("Repository name must be between 1 and 100 characters.")
+        if "/" in v or "\\" in v or ".." in v:
+            raise ValueError("Repository name contains invalid characters.")
         return v
 
 

@@ -95,20 +95,14 @@ class GitOperations:
 
         readme_content = f"# {repo_name}\n\n{description or ''}\n"
         readme_bytes = readme_content.encode("utf-8")
-        ts = int(time.time())
-
+        commit_msg = "Initial commit\n".encode("utf-8")
         fast_import_data = (
-            f"blob\nmark :1\ndata {len(readme_bytes)}\n".encode()
+            f"blob\nmark :1\ndata {len(readme_bytes)}\n".encode("utf-8")
             + readme_bytes
-            + f"\ncommit refs/heads/{default_branch}\n"
-            f"mark :2\n"
-            f"author Brack <brack@localhost> {ts} +0000\n"
-            f"committer Brack <brack@localhost> {ts} +0000\n"
-            f"data 16\n"
-            f"Initial commit\n"
-            f"M 100644 :1 README.md\n"
-            f"\n"
-        ).encode()
+            + f"\ncommit refs/heads/{default_branch}\nmark :2\nauthor Brack <brack@localhost> {ts} +0000\ncommitter Brack <brack@localhost> {ts} +0000\ndata {len(commit_msg)}\n".encode("utf-8")
+            + commit_msg
+            + b"M 100644 :1 README.md\n\n"
+        )
 
         _run_git(["fast-import", "--quiet"], cwd=self.repo_path, input_data=fast_import_data)
         _run_git(["update-server-info"], cwd=self.repo_path)

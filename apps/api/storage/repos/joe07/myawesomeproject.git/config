@@ -1,0 +1,18 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	symlinks = false
+	ignorecase = true
+
+[http]
+	receivepack = true
+
+[http]
+	receivepack = true
+
+[http]
+	receivepack = true
+
+[http]
+	receivepack = true
