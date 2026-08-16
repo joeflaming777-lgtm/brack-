@@ -1,0 +1,50 @@
+# Core framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+
+# Database
+sqlalchemy==2.0.35
+alembic==1.13.3
+psycopg2-binary==2.9.9
+asyncpg==0.29.0
+
+# Redis
+redis==5.0.8
+hiredis==2.3.2
+
+# Auth & Security
+argon2-cffi==23.1.0
+python-jose[cryptography]==3.3.0
+passlib==1.7.4
+
+# Validation
+pydantic==2.9.2
+pydantic-settings==2.5.2
+email-validator==2.2.0
+
+# Rate limiting
+slowapi==0.1.9
+
+# HTTP client
+httpx==0.27.2
+
+# Utilities
+python-dateutil==2.9.0
+python-slugify==8.0.4
+shortuuid==1.0.13
+
+# Background tasks
+celery==5.4.0
+
+# Testing
+pytest==8.3.3
+pytest-asyncio==0.24.0
+pytest-cov==5.0.0
+httpx==0.27.2
+factory-boy==3.3.1
+
+# Dev tools
+black==24.8.0
+ruff==0.6.8
+mypy==1.11.2
